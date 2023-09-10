@@ -13,8 +13,15 @@ public class TaskDefinitionBean implements Runnable {
     @Autowired
     private PostRepository postRepository;
 
+    @Autowired
+    private PostService postService;
+
+    private Integer id;
     private Post post;
     private TaskDefinition taskDefinition;
+
+    public TaskDefinitionBean() {
+    }
 
     public TaskDefinitionBean(Post post, TaskDefinition taskDefinition, PostRepository postRepository) {
         this.post = post;
@@ -22,10 +29,21 @@ public class TaskDefinitionBean implements Runnable {
         this.postRepository = postRepository;
     }
 
+    public TaskDefinitionBean(Integer id, TaskDefinition taskDefinition, PostService postService) {
+        this.id = id;
+        this.taskDefinition = taskDefinition;
+        this.postService=postService;
+    }
+
     @Override
     public void run() {
         if (post != null) {
             postRepository.save(post);
+        }
+
+        if (id != null) {
+            postService.deleteLikeAndComment(id);
+            postService.deletePostById(id);
         }
     }
 

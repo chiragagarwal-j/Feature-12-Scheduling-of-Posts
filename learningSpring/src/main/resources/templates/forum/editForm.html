@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>New Post Form</title>
+  </head>
+  <body th:object="${postForm}">
+    <form method="post" action="#" th:action="@{/forum/post/{id}/edit/save}">
+      <label for="content">Content</label>
+      <textarea id="content" name="content" th:field="*{content}"></textarea>
+      <input type="hidden" th:name="postId" th:value="${postId}" />
+      <input type="submit" value="Edit" />
+    </form>
+  </body>
+</html>

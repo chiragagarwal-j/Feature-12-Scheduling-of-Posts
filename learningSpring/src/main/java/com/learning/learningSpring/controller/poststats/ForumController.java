@@ -1,6 +1,7 @@
 package com.learning.learningSpring.controller.poststats;
 
 import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.learning.learningSpring.controller.binding.AddCommentForm;
@@ -32,6 +34,7 @@ import com.learning.learningSpring.repository.LikeCRUDRepository;
 import com.learning.learningSpring.repository.PostRepository;
 import com.learning.learningSpring.repository.UserRepository;
 import com.learning.learningSpring.service.DomainUserService;
+import com.learning.learningSpring.service.PostService;
 import com.learning.learningSpring.service.TaskDefinitionBean;
 import com.learning.learningSpring.service.TaskSchedulingService;
 import com.learning.learningSpring.utils.CronUtil;
@@ -64,6 +67,9 @@ public class ForumController {
 
 	@Autowired
 	private CronUtil cronUtil;
+
+	@Autowired
+	private PostService postService;
 
 	@PostConstruct
 	public void init() {
@@ -102,13 +108,65 @@ public class ForumController {
 			TaskDefinition taskDefinition = new TaskDefinition();
 			taskDefinition.setActionType("scheduling for addition of post ");
 			taskDefinition.setData("YourData");
-			TaskDefinitionBean taskBean = new TaskDefinitionBean(post,taskDefinition,postRepository);
+			TaskDefinitionBean taskBean = new TaskDefinitionBean(post, taskDefinition, postRepository);
 			taskSchedulingService.scheduleATask(jobId, taskBean, cronExpression);
 
 		} else {
 			postRepository.save(post);
 		}
-		return String.format("redirect:/forum/post/%d", post.getId());
+		return String.format("redirect:/forum/mypost");
+	}
+
+	@GetMapping("/mypost")
+	public String MyPostList(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+		List<Post> postList;
+		Optional<User> user = userRepository.findByName(userDetails.getUsername());
+		postList = postService.getMyPosts(user.get().getId());
+		model.addAttribute("posts", postList);
+		return "forum/myPosts";
+	}
+
+	@PostMapping("/post/{id}/delete")
+	public String deletePost(@PathVariable Integer id, @RequestParam(name="scheduleDate", required = false) LocalDateTime dateTime)
+			throws ParseException {
+		if (dateTime == null) {
+			postService.deleteLikeAndComment(id);
+			postService.deletePostById(id);
+		} else {
+			String cronExpression = cronUtil.dateToCronExpression(dateTime.toString());
+			String jobId = "post_" + UUID.randomUUID().toString();
+			TaskDefinition taskDefinition = new TaskDefinition();
+			taskDefinition.setActionType("scheduling for addition of post ");
+			taskDefinition.setData("YourData");
+			TaskDefinitionBean taskBean = new TaskDefinitionBean(id, taskDefinition,postService);
+			taskSchedulingService.scheduleATask(jobId, taskBean, cronExpression);
+		}
+
+		return "redirect:/forum/mypost";
+	}
+
+	@GetMapping("/post/{id}/edit")
+	public String editPost(@PathVariable Integer id, Model model, @AuthenticationPrincipal UserDetails userDetails) {
+
+		AddPostForm postForm = new AddPostForm();
+		User author = domainUserService.getByName(userDetails.getUsername()).get();
+		postForm.setUserId(author.getId());
+		Optional<Post> post;
+		post = postRepository.findById(id);
+		postForm.setUserId(post.get().getId());
+		postForm.setContent(post.get().getContent());
+		model.addAttribute("postForm", postForm);
+		model.addAttribute("postId", id);
+
+		return "forum/editForm";
+	}
+
+	@PostMapping("/post/{id}/edit/save")
+	public String editPostSave(@RequestParam("postId") Integer id, @ModelAttribute("postForm") AddPostForm postForm,
+			BindingResult bindingResult,
+			RedirectAttributes attr) throws ServletException {
+		postRepository.updatePost(id, postForm.getContent());
+		return String.format("redirect:/forum/mypost");
 	}
 
 	@GetMapping("/post/{id}")

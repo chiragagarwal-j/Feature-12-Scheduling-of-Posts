@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Blog post</title>
+<!--<link rel="stylesheet" th:href="@{/css/styles.css}">-->
+</head>
+<body>
+    <main>
+	    <h1>My Posts</h1>
+        <div class="posts" th:each="post :${posts}">
+            <h3 class="italic">Post by <span class="userId" th:text="${post.author.name}">John Doe</span></h1>
+            <p th:text="${post.content}">This is a post.</p>
+            <p>Post created at:<span th:text="${post.timestamp}">John Doe</span></p>
+            <form method="get" action="#" th:action="@{/forum/post/{id}/edit(id = ${post.id})}">
+                <input type="submit" value="edit">
+            </form>
+            <form method="post" action="#" th:action="@{/forum/post/{id}/delete(id = ${post.id})}">
+                <label for="scheduleDate">Schedule Date and Time to Delete Post:</label>
+                <input type="datetime-local" id="scheduleDate" name="scheduleDate">
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+    </main>
+</body>
+</html>
