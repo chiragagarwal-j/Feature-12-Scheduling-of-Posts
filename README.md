@@ -60,7 +60,7 @@ The `TaskSchedulingService` is a Spring service class designed for scheduling an
 
 When the current time matches a scheduled publication time, the scheduler activates the task associated with that post.
 
-**The Cron Expression**
+**The Cron Expression**  <br />
 Cron Expression Format : * * * * * *
 
 Example: <br />
