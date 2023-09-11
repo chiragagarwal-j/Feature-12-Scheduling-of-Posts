@@ -53,9 +53,9 @@ The `TaskSchedulingService` is a Spring service class designed for scheduling an
 
 * **Scheduling a Task (`scheduleATask` method):**
     *  This method allows you to schedule a task for execution with specific parameters:
-   - `jobId`: A unique identifier for the job/task.
-   - `tasklet`: A `Runnable` task to be executed when scheduling conditions are met.
-   - `cronExpression`: A cron expression specifying when the task should run.
+       - `jobId`: A unique identifier for the job/task.
+       - `tasklet`: A `Runnable` task to be executed when scheduling conditions are met.
+       - `cronExpression`: A cron expression specifying when the task should run.
     *  The method schedules the task using the provided `cronExpression` and stores the corresponding `ScheduledFuture` in the `jobsMap`.
 
 When the current time matches a scheduled publication time, the scheduler activates the task associated with that post.
