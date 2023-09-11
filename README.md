@@ -59,9 +59,9 @@ Example: <br />
 **Cron Expression : 0 54 19 7 9 ?**
 
 ## Conclusion
--Within the Spring framework, when tasks are scheduled for execution using TaskScheduler, they are typically executed on a separate thread.
--Spring manages a pool of worker threads to execute scheduled tasks asynchronously.These worker threads are separate from the main application thread and are responsible for executing tasks according to their specified schedules (defined using cron expressions here).
--When a task is scheduled, an instance of TaskDefinitionBean is created and executed on one of the worker threads managed by Spring's task scheduler.
+- Within the Spring framework, when tasks are scheduled for execution using TaskScheduler, they are typically executed on a separate thread.
+- Spring manages a pool of worker threads to execute scheduled tasks asynchronously.These worker threads are separate from the main application thread and are responsible for executing tasks according to their specified schedules (defined using cron expressions here).
+- When a task is scheduled, an instance of TaskDefinitionBean is created and executed on one of the worker threads managed by Spring's task scheduler.
 
 # Team Members:
 
