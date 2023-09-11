@@ -58,7 +58,7 @@ The `TaskSchedulingService` is a Spring service class designed for scheduling an
   - `cronExpression`: A cron expression specifying when the task should run.
 - The method schedules the task using the provided `cronExpression` and stores the corresponding `ScheduledFuture` in the `jobsMap`.
 
-This `TaskSchedulingService` simplifies the process of automating recurring tasks and provides an organized way to manage them within a Spring-based application.
+When the current time matches a scheduled publication time, the scheduler activates the task associated with that post.
 
 **The Cron Expression**
 Cron Expression Format : * * * * * *
@@ -74,7 +74,7 @@ Example: <br />
 * 30 3,6,9,12 * * *: This expression runs a task at 3:30 AM, 6:30 AM, 9:30 AM, and 12:30 PM every day.
 
 
-1.**Task Activation:** When the current time matches a scheduled publication time, the scheduler activates the task associated with that post.
+
 
 
 ## Conclusion
