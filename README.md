@@ -38,12 +38,12 @@ If you don't wish to schedule for deleting the post, you can simply disregard th
 
  
 
-**Task Scheduling:** Users or administrators input the content they want to publish along with the specific date and time they want it to be published. Your scheduler stores these scheduling requests in a queue or database, maintaining the scheduled publication timestamps.
+**TaskDefinitionBean Creation:**  Task Definition Bean is designed to execute scheduled actions within a Spring-based application. It implements the **Runnable** interface, where the specific action is defined within the overridden **run** method. This bean is responsible for performing tasks such as saving and deleting posts.
 
  
 
 **Scheduling Logic:**
-The scheduler constantly monitors the system clock or uses a timer mechanism to keep track of the current time. At regular intervals or in real-time, the scheduler checks if the current time matches any of the scheduled publication times from the queue using a cron Expression.
+The `TaskSchedulingService` is a Spring service that facilitates task scheduling in a Spring-based application. It utilizes a `TaskScheduler` for scheduling and a `jobsMap` to manage scheduled tasks. The `scheduleATask` method schedules tasks based on a unique job ID, a `Runnable` task, and a specified cron expression, storing the associated `ScheduledFuture` in the `jobsMap`. On the other hand, the `removeScheduledTask` method allows the removal of scheduled tasks by their job ID, canceling the task if it exists and marking the corresponding entry in the `jobsMap` as `null`. This service streamlines the process of automating tasks at specified intervals or times within a Spring application, making it a valuable tool for managing scheduled activities.
 
 **The Cron Expression**
 Cron Expression Format : * * * * * *
