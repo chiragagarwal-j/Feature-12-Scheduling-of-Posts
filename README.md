@@ -58,15 +58,10 @@ Example: <br />
 **Normal Date Time Expression: 2023-09-07 19:54:00** <br />
 **Cron Expression : 0 54 19 7 9 ?**
 
-- 0 2 \* \* \*: This cron expression runs a task every day at 2:00 AM.
-
-- 0 0 \* \* 1: This expression runs a task every Monday (day of the week 1) at midnight.
-
-- 30 3,6,9,12 \* \* \*: This expression runs a task at 3:30 AM, 6:30 AM, 9:30 AM, and 12:30 PM every day.
-
 ## Conclusion
-
-Dynamic task scheduling, whether implemented in Java Spring or any other context, plays a crucial role in optimizing resource utilization and efficiency. It allows for the flexible assignment of tasks or jobs based on real-time conditions and priorities, making it essential in various domains, including operating systems, cloud computing, and application development. Dynamic scheduling ensures that tasks are executed when needed, adapts to changing workloads, and can be adjusted at runtime to meet evolving requirements, ultimately improving system performance and responsiveness.
+-Within the Spring framework, when tasks are scheduled for execution using TaskScheduler, they are typically executed on a separate thread.
+-Spring manages a pool of worker threads to execute scheduled tasks asynchronously.These worker threads are separate from the main application thread and are responsible for executing tasks according to their specified schedules (defined using cron expressions here).
+-When a task is scheduled, an instance of TaskDefinitionBean is created and executed on one of the worker threads managed by Spring's task scheduler.
 
 # Team Members:
 
