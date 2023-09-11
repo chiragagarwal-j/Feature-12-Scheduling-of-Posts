@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Blog post</title>
-<!--<link rel="stylesheet" th:href="@{/css/styles.css}">-->
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Blog post</title>
+    <!-- <link rel="stylesheet" th:href="@{/css/myPosts.css}" /> -->
+  </head>
+  <body>
     <main>
 	    <h1>My Posts</h1>
         <div class="posts" th:each="post :${posts}">
@@ -22,5 +22,5 @@
             </form>
         </div>
     </main>
-</body>
+  </body>
 </html>

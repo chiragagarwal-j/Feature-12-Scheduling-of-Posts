@@ -38,8 +38,6 @@ import com.learning.learningSpring.service.PostService;
 import com.learning.learningSpring.service.TaskDefinitionBean;
 import com.learning.learningSpring.service.TaskSchedulingService;
 import com.learning.learningSpring.utils.CronUtil;
-import com.learning.learningSpring.utils.TaskDefinition;
-
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.ServletException;
 
@@ -105,12 +103,8 @@ public class ForumController {
 		if (postForm.getScheduleDate() != null) {
 			String cronExpression = cronUtil.dateToCronExpression(postForm.getScheduleDate().toString());
 			String jobId = "post_" + UUID.randomUUID().toString();
-			TaskDefinition taskDefinition = new TaskDefinition();
-			taskDefinition.setActionType("scheduling for addition of post ");
-			taskDefinition.setData("YourData");
-			TaskDefinitionBean taskBean = new TaskDefinitionBean(post, taskDefinition, postRepository);
+			TaskDefinitionBean taskBean = new TaskDefinitionBean(post, postRepository);
 			taskSchedulingService.scheduleATask(jobId, taskBean, cronExpression);
-
 		} else {
 			postRepository.save(post);
 		}
@@ -127,7 +121,8 @@ public class ForumController {
 	}
 
 	@PostMapping("/post/{id}/delete")
-	public String deletePost(@PathVariable Integer id, @RequestParam(name="scheduleDate", required = false) LocalDateTime dateTime)
+	public String deletePost(@PathVariable Integer id,
+			@RequestParam(name = "scheduleDate", required = false) LocalDateTime dateTime)
 			throws ParseException {
 		if (dateTime == null) {
 			postService.deleteLikeAndComment(id);
@@ -135,10 +130,7 @@ public class ForumController {
 		} else {
 			String cronExpression = cronUtil.dateToCronExpression(dateTime.toString());
 			String jobId = "post_" + UUID.randomUUID().toString();
-			TaskDefinition taskDefinition = new TaskDefinition();
-			taskDefinition.setActionType("scheduling for addition of post ");
-			taskDefinition.setData("YourData");
-			TaskDefinitionBean taskBean = new TaskDefinitionBean(id, taskDefinition,postService);
+			TaskDefinitionBean taskBean = new TaskDefinitionBean(id, postService);
 			taskSchedulingService.scheduleATask(jobId, taskBean, cronExpression);
 		}
 
