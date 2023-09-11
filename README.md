@@ -31,7 +31,7 @@ After logging into your forum and entering the post details page, then click on 
 
 If you don't wish to schedule for deleting the post, you can simply disregard the date and time option and proceed with deleting the post.
 
-
+![delete scheduled post](https://github.com/chiragagarwal-j/Feature-12-Scheduling-of-Posts/blob/main/Documentation/delete%20scheduled%20post.png)
  
 
 # The Work Flow
