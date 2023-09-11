@@ -38,12 +38,27 @@ If you don't wish to schedule for deleting the post, you can simply disregard th
 
  
 
-**TaskDefinitionBean Creation:**  Task Definition Bean is designed to execute scheduled actions within a Spring-based application. It implements the **Runnable** interface, where the specific action is defined within the overridden **run** method. This bean is responsible for performing tasks such as saving and deleting posts.
+**TaskDefinitionBean Creation:**  Task Definition Bean is designed to execute scheduled actions within a Spring-based application. It implements the `Runnable` interface, where the specific action is defined within the overridden `run` method. This bean is responsible for performing tasks such as saving and deleting posts.
 
  
 
 **Scheduling Logic:**
-The `TaskSchedulingService` is a Spring service that facilitates task scheduling in a Spring-based application. It utilizes a `TaskScheduler` for scheduling and a `jobsMap` to manage scheduled tasks. The `scheduleATask` method schedules tasks based on a unique job ID, a `Runnable` task, and a specified cron expression, storing the associated `ScheduledFuture` in the `jobsMap`. On the other hand, the `removeScheduledTask` method allows the removal of scheduled tasks by their job ID, canceling the task if it exists and marking the corresponding entry in the `jobsMap` as `null`. This service streamlines the process of automating tasks at specified intervals or times within a Spring application, making it a valuable tool for managing scheduled activities.
+The `TaskSchedulingService` is a Spring service class designed for scheduling and managing tasks in a Spring-based application. Here are the main aspects of this class, suitable for inclusion in a markdown file:
+
+**Task Scheduler Injection:**
+- The class injects a `TaskScheduler` bean provided by Spring for task scheduling.
+
+**Scheduled Tasks Storage:**
+- It maintains a `Map<String, ScheduledFuture<?>>` named `jobsMap` to track scheduled tasks. The keys represent job IDs, and the values are `ScheduledFuture` objects representing the scheduled tasks.
+
+**Scheduling a Task (`scheduleATask` method):**
+- This method allows you to schedule a task for execution with specific parameters:
+  - `jobId`: A unique identifier for the job/task.
+  - `tasklet`: A `Runnable` task to be executed when scheduling conditions are met.
+  - `cronExpression`: A cron expression specifying when the task should run.
+- The method schedules the task using the provided `cronExpression` and stores the corresponding `ScheduledFuture` in the `jobsMap`.
+
+This `TaskSchedulingService` simplifies the process of automating recurring tasks and provides an organized way to manage them within a Spring-based application.
 
 **The Cron Expression**
 Cron Expression Format : * * * * * *
