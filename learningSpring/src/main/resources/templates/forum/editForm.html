@@ -2,14 +2,15 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>New Post Form</title>
+    <title>Edit Post Content</title>
+    <link rel="stylesheet" th:href="@{/css/editForm.css}" />
   </head>
   <body th:object="${postForm}">
     <form method="post" action="#" th:action="@{/forum/post/{id}/edit/save}">
-      <label for="content">Content</label>
+      <label for="content">Edit Content</label>
       <textarea id="content" name="content" th:field="*{content}"></textarea>
       <input type="hidden" th:name="postId" th:value="${postId}" />
-      <input type="submit" value="Edit" />
+      <input type="submit" value="Save" />
     </form>
   </body>
 </html>

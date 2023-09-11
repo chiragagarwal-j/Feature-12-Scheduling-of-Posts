@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Blog post</title>
-    <!-- <link rel="stylesheet" th:href="@{/css/myPosts.css}" /> -->
+    <title>My Posts</title>
+    <link rel="stylesheet" th:href="@{/css/myPosts.css}" />
   </head>
   <body>
     <main>
@@ -16,7 +16,7 @@
                 <input type="submit" value="edit">
             </form>
             <form method="post" action="#" th:action="@{/forum/post/{id}/delete(id = ${post.id})}">
-                <label for="scheduleDate">Schedule Date and Time to Delete Post:</label>
+                <label for="scheduleDate">Schedule to Delete Post:</label>
                 <input type="datetime-local" id="scheduleDate" name="scheduleDate">
                 <input type="submit" value="Delete">
             </form>

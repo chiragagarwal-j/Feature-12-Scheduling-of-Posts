@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Post Stats Registration</title>
+<title>Registration</title>
+<link rel="stylesheet" th:href="@{/css/register.css}" />
 </head>
 <body>
-    <h1>Login!</h1>
+    <h1>Registration Form</h1>
     <form method="post" action="#" th:action="@{/forum/register}" th:object="${registrationForm}">
         <p th:text="${message}">Correct username and password</p>
         <label for="username">Username</label><br>

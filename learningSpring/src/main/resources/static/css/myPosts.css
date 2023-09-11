@@ -1,83 +1,83 @@
+body,
+h1,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-image: url("https://image.freepik.com/free-vector/social-media-icons-background_23-2147511281.jpg");
-  background-size: cover;
-  background-attachment: scroll;
-  font-family: Arial, sans-serif;
+  background-color: #084af1e6;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  text-align: center;
   margin: 0;
   padding: 0;
 }
 
-/* Style the form container */
-.form-container {
-  width: 400px;
+main {
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.8
-  ); /* Add transparency to the background color */
-  border-radius: 10px;
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 h1 {
-  text-align: center;
-  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #fff;
 }
 
-.card {
-  border: 1px solid #007bff; /* Border color */
+.posts {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 20px;
-  margin-top: 20px;
-  background-color: #f5f5f5; /* Background color */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: #333; /* Text color */
+  background-color: rgba(0, 0, 0, 0.7);
+  text-align: left;
 }
 
-.italic {
+p {
+  margin-top: 10px;
+  color: #fff;
+  text-align: left;
+}
+
+.posts p:last-child {
   font-style: italic;
-}
-
-.userId {
-  font-weight: bold;
+  color: #888;
+  text-align: left;
 }
 
 form {
   margin-top: 10px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-input[type="datetime-local"] {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  text-align: right;
 }
 
 input[type="submit"] {
-  width: 40%;
-  padding: 10px;
-  background-color: #ff6600; /* Change this to your desired button color */
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
   border: none;
   border-radius: 5px;
-  color: #fff;
-  font-weight: bold;
   cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+/* Add hover effect */
 input[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #f00808;
+  color: #fff;
+}
+
+input[type="datetime-local"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
 }

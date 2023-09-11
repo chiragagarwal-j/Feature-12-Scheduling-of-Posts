@@ -1,28 +1,17 @@
-body,
-h1,
-label,
-textarea,
-input[type="datetime-local"],
-input[type="submit"] {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   background-color: #084af1e6;
   color: #fff;
   font-family: "Arial", sans-serif;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
-
 
 h1 {
   font-size: 36px;
-  margin-top: 20px;
+  padding-top: 20px;
   text-transform: uppercase;
 }
-
 
 form {
   max-width: 400px;
@@ -33,31 +22,17 @@ form {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-
 label {
   display: block;
-  margin-top: 10px;
+  margin-bottom: 10px;
   font-weight: bold;
 }
 
-
-textarea {
-  width: 100%;
+input[type="text"],
+input[type="password"] {
+  width: 90%;
   padding: 10px;
-  margin-top: 5px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
-  min-height: 150px;
-}
-
-
-input[type="datetime-local"] {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
+  margin-bottom: 15px;
   background-color: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 5px;
@@ -65,25 +40,22 @@ input[type="datetime-local"] {
   font-size: 16px;
 }
 
-
-input[type="hidden"] {
-  display: none;
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
 }
-
 
 input[type="submit"] {
-  background-color:  #00b4f6;
-  color: #040101;
+  background-color: #f66700;
+  color: #fff;
   padding: 12px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
-  margin-top: 10px;
   transition: background-color 0.3s;
 }
 
-
 input[type="submit"]:hover {
-  background-color:  #19e61c;
+  background-color: #19e61c;
 }
