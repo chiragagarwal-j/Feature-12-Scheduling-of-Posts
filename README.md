@@ -38,11 +38,11 @@ If you don't wish to schedule for deleting the post, you can simply disregard th
 
  
 
-**TaskDefinitionBean Creation:**  Task Definition Bean is designed to execute scheduled actions within a Spring-based application. It implements the `Runnable` interface, where the specific action is defined within the overridden `run` method. This bean is responsible for performing tasks such as saving and deleting posts.
+1.**TaskDefinitionBean Creation:**  Task Definition Bean is designed to execute scheduled actions within a Spring-based application. It implements the `Runnable` interface, where the specific action is defined within the overridden `run` method. This bean is responsible for performing tasks such as saving and deleting posts.
 
  
 
-**Scheduling Logic:**
+2.**Scheduling Logic:**
 The `TaskSchedulingService` is a Spring service class designed for scheduling and managing tasks in a Spring-based application. Here are the main aspects of this class, suitable for inclusion in a markdown file:
 
 **Task Scheduler Injection:**
@@ -74,7 +74,7 @@ Example: <br />
 * 30 3,6,9,12 * * *: This expression runs a task at 3:30 AM, 6:30 AM, 9:30 AM, and 12:30 PM every day.
 
 
-**Task Activation:** When the current time matches a scheduled publication time, the scheduler activates the task associated with that post. This task typically involves posting content to a designated platform, such as a social media platform, blog, or website.
+1.**Task Activation:** When the current time matches a scheduled publication time, the scheduler activates the task associated with that post.
 
 
 ## Conclusion
