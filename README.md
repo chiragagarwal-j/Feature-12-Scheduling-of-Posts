@@ -17,7 +17,7 @@ Introducing our project that focuses on **scheduling posts**, a feature-rich sol
 After logging into your forum and enter the content, then click on **date and time** prompt and set the date and time you wish to publish your post.
 
 If you don't wish to schedule a post, you can simply disregard the date and time option and proceed with publishing the post.
-![create post](https://github.com/chiragagarwal-j/Feature-12-Scheduling-of-Posts/blob/main/Documentation/create%20scheduled%20post.png)
+![create post](https://github.com/chiragagarwal-j/Feature-12-Scheduling-of-Posts/blob/main/Documentation/new%20scheduled%20add%20post.png)
 
 # How to delete scheduled post?
 
@@ -25,7 +25,7 @@ After logging into your forum and entering the post details page, then click on 
 
 If you don't wish to schedule for deleting the post, you can simply disregard the date and time option and proceed with deleting the post.
 
-![delete scheduled post](https://github.com/chiragagarwal-j/Feature-12-Scheduling-of-Posts/blob/main/Documentation/delete%20scheduled%20post.png)
+![delete scheduled post](https://github.com/chiragagarwal-j/Feature-12-Scheduling-of-Posts/blob/main/Documentation/new%20scheduled%20del%20post.png)
 
 # The Work Flow
 
