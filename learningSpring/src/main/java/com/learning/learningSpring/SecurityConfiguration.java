@@ -28,10 +28,10 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/forum/register").permitAll()
+                        .requestMatchers("/forum/register", "/error", "/css/**").permitAll()
                         .anyRequest().authenticated())
-                .logout(withDefaults())
-                .formLogin(withDefaults());
+                        .formLogin((login) -> login.loginProcessingUrl("/login").defaultSuccessUrl("/forum/post/form", true))
+                        .logout((logout) -> logout.logoutUrl("/logout").logoutSuccessUrl("/forum/register"));
 
         return http.build();
     }
